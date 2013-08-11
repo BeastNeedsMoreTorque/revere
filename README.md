@@ -26,3 +26,9 @@ A little network analysis example. The data come from an appendix to David Hacke
     ````
     bundle exec ruby scripts/import.rb
     ````
+
+* Create JAR for the JBLAS stuff
+
+    ````
+    mvn clean compile assembly:single
+    ````    
