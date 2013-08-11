@@ -27,8 +27,9 @@ A little network analysis example. The data come from an appendix to David Hacke
     bundle exec ruby scripts/import.rb
     ````
 
-* Create JAR for the JBLAS stuff
+* Run JBLAS eigenvector centrality measure over the data set
 
     ````
     mvn clean compile assembly:single
+    java -cp target/jblas-spike-1.0-SNAPSHOT-jar-with-dependencies.jar Neo4jAdjacencyMatrixSpike
     ````    
