@@ -3,6 +3,10 @@ A little network analysis example. The data come from an appendix to David Hacke
 ## Prerequisites
 * [Bundler](http://bundler.io/)
 
+    ````    
+    gem install bundler
+    ````
+
 ## Getting started
 
 * Download and install neo4j

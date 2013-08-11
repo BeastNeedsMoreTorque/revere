@@ -3,7 +3,7 @@ require 'neography'
 
 @neo = Neography::Rest.new
 
-rows = CSV.read(File.join(File.dirname(__FILE__), 'data', 'PaulRevereAppD.csv'))
+rows = CSV.read(File.join(File.dirname(__FILE__), '..', 'data', 'PaulRevereAppD.csv'))
 
 group_params = rows.shift.each_with_index.inject([]) {|acc, (group, idx)| acc << { :name => group, :idx => idx }; acc } 
 @neo.execute_query("CREATE (:Group {group})", {:group => group_params})
