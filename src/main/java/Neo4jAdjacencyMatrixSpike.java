@@ -33,6 +33,26 @@ public class Neo4jAdjacencyMatrixSpike {
         updatePeopleWithEigenvector(people, principalEigenvector);
 
         System.out.println(sort(people).take(10));
+
+        updateNeo4jWithEigenvectors(people);
+    }
+
+    private static void updateNeo4jWithEigenvectors(List<Person> people) {
+        for (Person person : people) {
+            ObjectNode request = JsonNodeFactory.instance.objectNode();
+            request.put("query", "START p = node({nodeId}) SET p.eigenvectorCentrality={value}");
+
+            ObjectNode params = JsonNodeFactory.instance.objectNode();
+            params.put("nodeId", person.nodeId);
+            params.put("value", person.eigenvector);
+
+            request.put("params", params);
+
+            client().resource("http://localhost:7474/db/data/cypher")
+                    .entity(request, MediaType.APPLICATION_JSON)
+                    .accept(MediaType.APPLICATION_JSON)
+                    .post(ClientResponse.class);
+        }
     }
 
     private static ObjectNode queryAsJson() {
