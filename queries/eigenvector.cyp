@@ -39,7 +39,7 @@ WHERE p1.name = "Paul Revere"
 WITH p1, p2
 MATCH p = p1-[?:MEMBER_OF]->()<-[?:MEMBER_OF]-p2
 
-RETURN p2, COUNT(p)
+RETURN p1, p2, COUNT(p)
 
 WITH p1.name AS p1, p2.name AS p2, COUNT(p) AS links
 ORDER BY p2
