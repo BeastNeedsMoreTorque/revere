@@ -8,7 +8,7 @@ A little network analysis example. The data come from an appendix to David Hacke
 * Download and install neo4j
 
     ````    
-    ./installneo4.sh
+    ./scripts/installneo4.sh
     ````
 
 * Start neo4j server
@@ -20,5 +20,5 @@ A little network analysis example. The data come from an appendix to David Hacke
 * Import Paul Revere data set
     
     ````
-    bundle exec ruby import.rb
+    bundle exec ruby scripts/import.rb
     ````
