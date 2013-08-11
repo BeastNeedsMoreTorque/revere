@@ -27,11 +27,12 @@ public class Neo4jAdjacencyMatrixSpike {
         JsonNode result = response.getEntity(JsonNode.class);
         ArrayNode rows = (ArrayNode) result.get("data");
 
-        List<Person> people = asPeople(rows);
         List<Double> principalEigenvector = JBLASSpike.getPrincipalEigenvector(new DoubleMatrix(asMatrix(rows)));
+
+        List<Person> people = asPeople(rows);
         updatePeopleWithEigenvector(people, principalEigenvector);
 
-        System.out.println("updatePeopleWithEigenvector(people, principalEigenvector); = " + sort(people).take(10));
+        System.out.println(sort(people).take(10));
     }
 
     private static ObjectNode queryAsJson() {
